@@ -32,7 +32,7 @@ const TEST_DATA = {
       tcId: 'Pos_Fun_002',
       name: 'Present tense variation',
       input: 'api thaama kanavaa',
-      expected: 'අපි තාම කනවා', // FIXED: Removed trailing p
+      expected: 'අපි තාම කනවා', 
       category: 'Tenses (present)',
       grammar: 'Present tense variation',
       length: 'S'
@@ -83,7 +83,7 @@ const TEST_DATA = {
       tcId: 'Pos_Fun_007',
       name: 'Tense variations (past to present)',
       input: 'mama ee gaena balaaporoththu thiyaagena hitiyaa',
-      expected: 'මම ඒගැන බලාපොරොත්තු තියාගෙන හිටියා',
+      expected: 'මම ඒ ගැන බලාපොරොත්තු තියාගෙන හිටියා',
       category: 'Daily language usage',
       grammar: 'Past to present tense variation',
       length: 'S'
@@ -145,7 +145,7 @@ const TEST_DATA = {
       expected: 'මගේ බර 10kg ක් අඩු වෙලා, එම නිසා මට doctor බෙහෙත් ලබා දුන්නා.', // FIXED: Removed trailing space
       category: 'Units of measurements',
       grammar: 'Units',
-      length: 'S'
+      length: 'M'
     },
     
     {
@@ -171,60 +171,61 @@ const TEST_DATA = {
     
     {
       tcId: 'Pos_Fun_016',
+      name: 'paragraph with English terms',
+      input: 'Mata assignment eka ivara karanna thava dhavas dhekayi thiyenne. oyaa free nam mata udhav karanna puluvandha? api heta library eke set vela discuss karamu. please mata call ekak ganna. heta ena velaava kathaa kara ganna.',
+      expected: 'මට assignment එක ඉවර කරන්න තව දවස් දෙකයි තියෙන්නෙ. ඔයා free නම් මට උදව් කරන්න පුලුවන්ද? අපි හෙට library eke සෙට් වෙල discuss කරමු. please මට call එකක් ගන්න. හෙට එන වෙලාව කතා කර ගන්න.',
+      category: 'Greeting / request / response',
+      grammar: 'Greeting',
+      length: 'L'
+    },
+
+    {
+      tcId: 'Pos_Fun_017',
       name: 'Greeting',
       input: 'SuBha sanDhYaavak veevaa!',
       expected: 'සුභ සන්ධ්‍යාවක් වේවා!',
-      category: 'Greeting / request / response',
+      category: 'Daily language usage',
       grammar: 'Greeting',
       length: 'S'
     },
-    {
-      tcId: 'Pos_Fun_017',
-      name: 'Cannot statement',
-      input: 'mata eeka karanna baee',
-      expected: 'මට ඒක කරන්න බෑ',
-      category: 'Daily language usage',
-      grammar: 'Negation (negative form)',
-      length: 'S'
-    },
     
-    
+    // Numbers and Formats
     {
       tcId: 'Pos_Fun_018',
-      name: 'Plural pronoun usage',
-      input: 'eyaalaa heta enavaa',
-      expected: 'එයාලා හෙට එනවා',
-      category: 'Daily language usage',
-      grammar: 'Plural form',
+      name: 'currency',
+      input: 'eyaagee padiya USD 1500 klu',
+      expected: 'එයාගේ පඩිය USD 1500 ක්ලු ',
+      category: 'Currency',
+      grammar: 'Simple sentence',
       length: 'S'
     },
     
-    // Word Combinations
+  
     {
       tcId: 'Pos_Fun_019',
-      name: 'Common phrase pattern',
-      input: 'poddak innako mama ennam',
-      expected: 'පොඩ්ඩක් ඉන්නකො මම එන්නම්',
-      category: 'Word combination / phrase pattern',
+      name: 'Convert medium length sentence',
+      input: 'mama adha iskoolayee program ekakata giyaa haebaeyi mama aavee raee velaa.',
+      expected: 'මම අද ඉස්කෝලයේ program එකකට ගියා හැබැයි මම ආවේ රෑ වෙලා.',
+      category: 'Robustness validation',
       grammar: 'Simple sentence',
-      length: 'S'
+      length: 'M'
     },
     
     // Mixed Language
     {
       tcId: 'Pos_Fun_020',
       name: 'English brand term embedded',
-      input: 'mata Facebook account eka login karanna baee',
-      expected: 'මට Facebook account එක login කරන්න බෑ',
+      input: 'mata Facebook account eka login venna  baee. aeyi dha dhannee naee needha?',
+      expected: 'මට Facebook account එක login වෙන්න  බෑ. ඇයි ද දන්නේ නෑ නේද?',
       category: 'Mixed Singlish + English',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
       tcId: 'Pos_Fun_021',
-      name: 'Place name preservation',
-      input: 'nimeelaa Kandy giyaa',
-      expected: 'නිමේලා Kandy ගියා',
+      name: 'Simple Sentences',
+      input: 'mama adha naendhalaagee gedhara yannee. oyath enavadha ehee yanna?',
+      expected: 'මම අද නැන්දලාගේ ගෙදර යන්නේ. ඔයත් එනවද එහේ යන්න?',
       category: 'Names / places / common English words',
       grammar: 'Past tense',
       length: 'S'
@@ -234,19 +235,8 @@ const TEST_DATA = {
     {
       tcId: 'Pos_Fun_022',
       name: 'Exclamation mark handling',
-      input: 'supiri!',
-      expected: 'සුපිරි!',
-      category: 'Punctuation / numbers',
-      grammar: 'Simple sentence',
-      length: 'S'
-    },
-    
-    // Numbers and Formats
-    {
-      tcId: 'Pos_Fun_023',
-      name: 'Currency amount',
-      input: 'mata Rs. 500k oonee',
-      expected: 'මට Rs. 500ක් ඕනෑ',
+      input: 'supiriyi! apita dhinuma laebunaa.',
+      expected: 'සුපිරියි! අපිට දිනුම ලැබුනා.',
       category: 'Punctuation / numbers',
       grammar: 'Simple sentence',
       length: 'S'
@@ -254,10 +244,21 @@ const TEST_DATA = {
     
     // Medium Length
     {
+      tcId: 'Pos_Fun_023',
+      name: 'Place name preservation',
+      input: 'kasun heta gedhara yanavalu eeka nisaa mama adha eyaava balanna aavaa',
+      expected: 'කසුන් හෙට ගෙදර යනවලු ඒක නිසා මම අද එයාව බලන්න ආවා',
+      category: 'Punctuation / numbers',
+      grammar: 'Simple sentence',
+      length: 'M'
+    },
+    
+    
+    {
       tcId: 'Pos_Fun_024',
       name: 'Medium length conversation',
-      input: 'mama heta office yanavaa eehindha mata adha raee kanna baee. oyaa mata raee eka savanna puluvandha',
-      expected: 'මම හෙට office යනවා ඒහින්ද මට අද රෑ කන්න බෑ. ඔයා මට රෑ එක සවන්න පුලුවන්ද',
+      input: 'mama office yanavaa eehindha mata adha raee kaeema epaa. oyaata vitharak kaeema hadhaa ganna.',
+      expected: 'මම office යනවා ඒහින්ද මට අද රෑ කෑම එපා. ඔයාට විතරක් කෑම හදා ගන්න.',
       category: 'Daily language usage',
       grammar: 'Compound sentence',
       length: 'M'
@@ -267,16 +268,16 @@ const TEST_DATA = {
   // RENAMED: Changed from 'negative' to 'error_handling' for clarity
   error_handling: [
     {
-      tcId: 'Err_Fun_001', 
+      tcId: 'Nev_Fun_001', 
       name: 'Missing space between words',
-      input: 'mamagedharainnee',
-      expected: 'මම ගෙදර ඉන්නේ',
+      input: 'mamagedharainnee. ',
+      expected: 'මම ගෙදර ඉන්නේ. ',
       category: 'Typographical error handling',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_002', 
+      tcId: 'Nev_Fun_002', 
       name: 'Joined compound words',
       input: 'apipassekathakaramu',
       expected: 'අපි පස්සේ කතා කරමු',
@@ -285,7 +286,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_003', 
+      tcId: 'Nev_Fun_003', 
       name: 'Mixed spacing issues',
       input: 'mata     oonee  eeka',
       expected: 'මට ඕනෑ ඒක',
@@ -294,7 +295,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_004', 
+      tcId: 'Nev_Fun_004', 
       name: 'Line break in sentence',
       input: 'mama gedhara yanavaa kamaltatath kiyanna', 
       expected: 'මම ගෙදර යනවා කමල්ටත් කියන්න', 
@@ -303,7 +304,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_005', 
+      tcId: 'Nev_Fun_005', 
       name: 'Informal slang phrase',
       input: 'machaang supiriyaane',
       expected: 'මචාන්ග් සුපිරියානෙ',
@@ -312,7 +313,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_006', 
+      tcId: 'Nev_Fun_006', 
       name: 'Colloquial expression',
       input: 'adooo mokakkdha mee',
       expected: 'අඩෝඕ මොකක්ක්ද මේ',
@@ -321,7 +322,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_007', 
+      tcId: 'Nev_Fun_007', 
       name: 'Mixed English with errors',
       input: 'mamaWhatsAppekagiyaa',
       expected: 'මම WhatsApp එකගියා',
@@ -330,7 +331,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_008', 
+      tcId: 'Nev_Fun_008', 
       name: 'Abbreviation in sentence',
       input: 'mata ASAP eeka oonee',
       expected: 'මට ASAP ඒක ඕනෑ',
@@ -339,7 +340,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_009', 
+      tcId: 'Nev_Fun_009', 
       name: 'Question with spacing error',
       input: 'oyaakohedhainnee',
       expected: 'ඔයා කොහෙද ඉන්නේ',
@@ -348,7 +349,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Err_Fun_010', 
+      tcId: 'Nev_Fun_010', 
       name: 'Complex slang statement',
       input: 'eyi bro eeka set karala denna',
       expected: 'එයි bro ඒක set කරල දෙන්න',
