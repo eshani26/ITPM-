@@ -1,0 +1,119 @@
+# Git Repository Setup Instructions
+
+## Repository Link
+[Your GitHub repository URL will go here after you upload this project]
+
+Example: https://github.com/yourusername/swift-translator-tests
+
+## How to Create and Upload to GitHub
+
+### Option 1: Using GitHub Desktop (Easiest)
+
+1. Download and install GitHub Desktop from: https://desktop.github.com/
+2. Open GitHub Desktop and sign in to your GitHub account
+3. Click "File" → "Add local repository"
+4. Navigate to this project folder
+5. Click "Create repository" if it's not already a git repository
+6. Enter repository name: "swift-translator-tests"
+7. Click "Publish repository"
+8. Uncheck "Keep this code private" to make it public
+9. Click "Publish Repository"
+10. Copy the repository URL from GitHub and paste it in this file
+
+### Option 2: Using Command Line
+
+1. Open terminal in the project directory
+2. Initialize git repository:
+   ```bash
+   git init
+   ```
+
+3. Add all files:
+   ```bash
+   git add .
+   ```
+
+4. Commit files:
+   ```bash
+   git commit -m "Initial commit: SwiftTranslator test automation suite"
+   ```
+
+5. Create a new repository on GitHub:
+   - Go to https://github.com
+   - Click the "+" icon → "New repository"
+   - Repository name: "swift-translator-tests"
+   - Description: "Automated testing suite for SwiftTranslator using Playwright"
+   - Make it PUBLIC
+   - Do NOT initialize with README (we already have one)
+   - Click "Create repository"
+
+6. Link local repository to GitHub:
+   ```bash
+   git remote add origin https://github.com/YOUR-USERNAME/swift-translator-tests.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+7. Copy the repository URL and paste it below
+
+## Your Repository URL
+After creating the repository, replace this line with your actual GitHub repository URL:
+
+REPOSITORY_URL: [PASTE YOUR URL HERE]
+
+## Verification Checklist
+
+Before submission, verify:
+- ✓ Repository is PUBLIC (not private)
+- ✓ All files are uploaded:
+  - swift-translator-tests.spec.js
+  - playwright.config.js
+  - package.json
+  - README.md
+  - .gitignore
+- ✓ README.md shows correct installation instructions
+- ✓ Repository can be cloned by others
+- ✓ No personal information or sensitive data in commits
+
+## Testing Repository Access
+
+To verify your repository is publicly accessible:
+
+1. Open a private/incognito browser window
+2. Navigate to your repository URL
+3. Confirm you can see all files without logging in
+4. Try cloning: `git clone YOUR-REPOSITORY-URL`
+
+## Important Notes
+
+- Repositories that cannot be accessed during marking will NOT be evaluated
+- Ensure the repository remains PUBLIC until after grading
+- The repository link should be provided in this text file during submission
+- All project files must be in the root of the repository or clearly organized
+
+## Troubleshooting
+
+**If git push fails:**
+- Verify you're logged into the correct GitHub account
+- Check if repository exists on GitHub
+- Ensure repository is public
+- Try: `git remote -v` to check remote URL is correct
+
+**If repository shows as empty:**
+- Ensure you ran `git add .` before commit
+- Check `git status` to see tracked files
+- Verify all files are committed: `git log`
+
+## Submission Format
+
+When submitting Assignment 1, include:
+1. This text file with the repository URL filled in
+2. The Test_Cases_Template.xlsx file
+3. ZIP file containing all project files (as backup)
+
+## Contact
+
+If you encounter issues with GitHub:
+- GitHub Help: https://docs.github.com
+- Git Documentation: https://git-scm.com/doc
+- Seek help from instructor if needed
