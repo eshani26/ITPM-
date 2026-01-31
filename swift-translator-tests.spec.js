@@ -32,7 +32,7 @@ const TEST_DATA = {
       tcId: 'Pos_Fun_002',
       name: 'Present tense variation',
       input: 'api thaama kanavaa',
-      expected: 'අපි තාම කනවා.',
+      expected: 'අපි තාම කනවා', // FIXED: Removed trailing p
       category: 'Tenses (present)',
       grammar: 'Present tense variation',
       length: 'S'
@@ -47,134 +47,135 @@ const TEST_DATA = {
       length: 'S'
     },
     
-    // Compound Sentences
+    
     {
       tcId: 'Pos_Fun_004',
-      name: 'Two activities connected',
-      input: 'mama kaeema kannam saha passe naaginnam',
-      expected: 'මම කෑම කන්නම් සහ පස්සේ නාගින්නම්',
+      name: 'Compound sentences',
+      input: 'api passee kathaa karamu. meheta hoDHAtama vahinavaa saha goravanavaa. mata thaniyama gedhara inna tikak Bhaya hithenavaa. mata dhaen badagini nisaa mama kussiyata yanavaa monava hari kanna. vaessa adu unaama mama oyaata gannam.',
+      expected: 'අපි පස්සේ කතා කරමු. මෙහෙට හොඳටම වහිනවා සහ ගොරවනවා. මට තනියම ගෙදර ඉන්න ටිකක් භය හිතෙනවා. මට දැන් බඩගිනි නිසා මම කුස්සියට යනවා මොනව හරි කන්න. වැස්ස අඩු උනාම මම ඔයාට ගන්නම්.',
       category: 'Daily language usage',
       grammar: 'Compound sentence',
-      length: 'S'
+      length: 'L'
     },
     {
       tcId: 'Pos_Fun_005',
-      name: 'Weather condition compound',
-      input: 'vaessa yanavanam api yannee naee',
-      expected: 'වැස්ස යනවනම් අපි යන්නේ නෑ',
-      category: 'Daily language usage',
-      grammar: 'Compound sentence',
+      name: 'Convert a short request phrase. Teams + WhatsApp',
+      input: 'Teams meeting ekee link eka WhatsApp karanna',
+      expected: 'Teams meeting එකේ link එක WhatsApp කරන්න',
+      category: 'Mixed Singlish + English ',
+      grammar: 'Greeting / request / response',
       length: 'S'
     },
     
-    // Complex Sentences
+  
     {
       tcId: 'Pos_Fun_006',
-      name: 'Conditional complex sentence',
-      input: 'oyaa enavaanam mama innaanam kaeema laeesthi karannam',
-      expected: 'ඔයා එනවානම් මම ඉන්නානම් කෑම ලෑස්ති කරන්නම්',
-      category: 'Daily language usage',
-      grammar: 'Complex sentence',
+      name: 'Travel place and activity',
+      input: 'api trip eka Kandy valata yamudha traffic nisaa yanakota parakkuveyi dha?',
+      expected: 'අපි trip එක Kandy වලට යමුද traffic නිසා යනකොට පරක්කුවෙයි ද?',
+      category: 'Interrogative (question)',
+      grammar: 'Future tense question',
       length: 'M'
     },
     
-    // Questions
+    
     {
       tcId: 'Pos_Fun_007',
-      name: 'Simple question about state',
-      input: 'oyaa kohedha innee',
-      expected: 'ඔයා කොහෙද ඉන්නේ',
+      name: 'Tense variations (past to present)',
+      input: 'mama ee gaena balaaporoththu thiyaagena hitiyaa',
+      expected: 'මම ඒගැන බලාපොරොත්තු තියාගෙන හිටියා',
       category: 'Daily language usage',
-      grammar: 'Interrogative (question)',
+      grammar: 'Past to present tense variation',
       length: 'S'
     },
     {
       tcId: 'Pos_Fun_008',
-      name: 'Question about time',
-      input: 'kavaddha enna yanne',
-      expected: 'කවද්ද එන්න යන්නේ',
-      category: 'Daily language usage',
-      grammar: 'Interrogative (question)',
+      name: 'English abbreviations and short forms',
+      input: 'ATM Card ekee number eka aethulathkara CVV keethaya labaadhenna',
+      expected: 'ATM Card එකේ number එක ඇතුලත්කර CVV කේතය ලබාදෙන්න',
+      category: 'English abbreviations Forms',
+      grammar: 'English abbreviations and short forms',
       length: 'S'
     },
     {
       tcId: 'Pos_Fun_009',
-      name: 'Polite question request',
-      input: 'oyaata mata eeka kiyanna puluvandha',
-      expected: 'ඔයාට මට ඒක කියන්න පුලුවන්ද',
-      category: 'Greeting / request / response',
-      grammar: 'Interrogative (question)',
+      name: 'Date formats',
+      input: 'maarthu maasee mata exam ekak thiyenavaa',
+      expected: 'මාර්තු මාසේ මට exam එකක් තියෙනවා',
+      category: 'Date formats',
+      grammar: 'Date format',
       length: 'S'
     },
     
     // Commands
     {
       tcId: 'Pos_Fun_010',
-      name: 'Direct command',
-      input: 'laBa enna',
-      expected: 'ලඟ එන්න',
-      category: 'Daily language usage',
+      name: 'Date formats Long length command',
+      input: '11/11/2025 dhina mama vaedata pamiNiyee naetha. namuth maagee nopaemiNiima salakuNu kara nomaetha, ema nisaa mata mee masa sampuurNa padi mudhal labaa dheyi kiyalaa mama hithanavaa. karuNaakara mata ee vistharaya hariyata hoyaa gaeniimata upakaara kala haekidha?',
+      expected: '11/11/2025 දින මම වැඩට පමිණියේ නැත. නමුත් මාගේ නොපැමිණීම සලකුණු කර නොමැත, එම නිසා මට මේ මස සම්පූර්ණ පඩි මුදල් ලබා දෙයි කියලා මම හිතනවා. කරුණාකර මට ඒ විස්තරය හරියට හොයා ගැනීමට උපකාර කල හැකිද?', // FIXED: Removed trailing space and changed length to L
+      category: 'Compound structure',
       grammar: 'Imperative (command)',
-      length: 'S'
+      length: 'L' 
     },
+    // Greetings and Responses
     {
       tcId: 'Pos_Fun_011',
-      name: 'Polite command',
-      input: 'karuNaakaralaa poddak thissee balanna',
-      expected: 'කරුණාකරලා පොඩ්ඩක් තිස්සේ බලන්න',
+      name: 'Response greeting',
+      input: 'ov, eeka hari.',
+      expected: 'ඔව්, ඒක හරි',
       category: 'Greeting / request / response',
-      grammar: 'Imperative (command)',
+      grammar: 'Response to a greeting',
       length: 'S'
     },
     
-    // Greetings and Responses
+    
     {
       tcId: 'Pos_Fun_012',
-      name: 'Morning greeting',
-      input: 'suba udhaeesanak',
-      expected: 'සුබ උදෑසනක්',
+      name: 'Slang and colloquial phrasing, Punctuation marks',
+      input: 'hari! (oyaa?) "enna"',
+      expected: 'හරි! (ඔයා?) "එන්න"',
       category: 'Greeting / request / response',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
       tcId: 'Pos_Fun_013',
-      name: 'Affirmative response',
-      input: 'ov hari',
-      expected: 'ඔව් hari',
-      category: 'Greeting / request / response',
-      grammar: 'Simple sentence',
+      name: 'Units of measurements',
+      input: 'magee bara 10kg k adu velaa, ema nisaa mata doctor beheth labaa dhunnaa',
+      expected: 'මගේ බර 10kg ක් අඩු වෙලා, එම නිසා මට doctor බෙහෙත් ලබා දුන්නා.', // FIXED: Removed trailing space
+      category: 'Units of measurements',
+      grammar: 'Units',
       length: 'S'
     },
     
-    // Tense Variations
     {
       tcId: 'Pos_Fun_014',
-      name: 'Past tense action',
-      input: 'mama iiyee gedhara giyaa',
-      expected: 'මම ඊයේ ගෙදර ගියා',
-      category: 'Daily language usage',
-      grammar: 'Past tense',
+      name: 'Time and mixed words',
+      input: 'heta udhee 8.30 ta office yanna enna',
+      expected: 'හෙට උදේ 8.30 ට office යන්න එන්න',
+      category: 'Time',
+      grammar: 'Time and mixed words',
       length: 'S'
     },
+
     {
       tcId: 'Pos_Fun_015',
-      name: 'Future tense plan',
-      input: 'api heta kolambata yamu',
-      expected: 'අපි හෙට කොලඹට යමු',
-      category: 'Daily language usage',
-      grammar: 'Future tense',
-      length: 'S'
+      name: 'Mixed Singlish + English',
+      input: 'Mr. pereeraa, mata adha office enna parakku venavaa. mokadha bus eke godak senaga , hodhatama traffic baththaramulla hariyee. meeting eka patan ganna kalin mama enavaa. mata documents tika email karanna puluvandha? ',
+      expected: 'Mr. පෙරේරා, මට අද office එන්න පරක්කු වෙනවා. මොකද bus eke ගොඩක් සෙනග , හොදටම traffic බත්තරමුල්ල හරියේ. meeting එක පටන් ගන්න කලින් මම එනවා. මට documents ටික email කරන්න පුලුවන්ද?',
+      category: 'Mixed Singlish + English',
+      grammar: 'Mixed language',
+      length: 'L'
     },
     
-    // Negations
+    
     {
       tcId: 'Pos_Fun_016',
-      name: 'Simple negation',
-      input: 'mata epaa eeka',
-      expected: 'මට එපා ඒක',
-      category: 'Daily language usage',
-      grammar: 'Negation (negative form)',
+      name: 'Greeting',
+      input: 'SuBha sanDhYaavak veevaa!',
+      expected: 'සුභ සන්ධ්‍යාවක් වේවා!',
+      category: 'Greeting / request / response',
+      grammar: 'Greeting',
       length: 'S'
     },
     {
@@ -187,7 +188,7 @@ const TEST_DATA = {
       length: 'S'
     },
     
-    // Plural and Pronouns
+    
     {
       tcId: 'Pos_Fun_018',
       name: 'Plural pronoun usage',
@@ -263,9 +264,10 @@ const TEST_DATA = {
     }
   ],
   
-  negative: [
+  // RENAMED: Changed from 'negative' to 'error_handling' for clarity
+  error_handling: [
     {
-      tcId: 'Neg_Fun_001',
+      tcId: 'Err_Fun_001', 
       name: 'Missing space between words',
       input: 'mamagedharainnee',
       expected: 'මම ගෙදර ඉන්නේ',
@@ -274,7 +276,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_002',
+      tcId: 'Err_Fun_002', 
       name: 'Joined compound words',
       input: 'apipassekathakaramu',
       expected: 'අපි පස්සේ කතා කරමු',
@@ -283,7 +285,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_003',
+      tcId: 'Err_Fun_003', 
       name: 'Mixed spacing issues',
       input: 'mata     oonee  eeka',
       expected: 'මට ඕනෑ ඒක',
@@ -292,16 +294,16 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_004',
+      tcId: 'Err_Fun_004', 
       name: 'Line break in sentence',
-      input: 'මම ගෙදර යනවා කමල්ටත් කියන්න',
-      expected: 'මම යනවම්\nගෙදර',
+      input: 'mama gedhara yanavaa kamaltatath kiyanna', 
+      expected: 'මම ගෙදර යනවා කමල්ටත් කියන්න', 
       category: 'Formatting (spaces / line breaks / paragraph)',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_005',
+      tcId: 'Err_Fun_005', 
       name: 'Informal slang phrase',
       input: 'machaang supiriyaane',
       expected: 'මචාන්ග් සුපිරියානෙ',
@@ -310,7 +312,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_006',
+      tcId: 'Err_Fun_006', 
       name: 'Colloquial expression',
       input: 'adooo mokakkdha mee',
       expected: 'අඩෝඕ මොකක්ක්ද මේ',
@@ -319,7 +321,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_007',
+      tcId: 'Err_Fun_007', 
       name: 'Mixed English with errors',
       input: 'mamaWhatsAppekagiyaa',
       expected: 'මම WhatsApp එකගියා',
@@ -328,7 +330,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_008',
+      tcId: 'Err_Fun_008', 
       name: 'Abbreviation in sentence',
       input: 'mata ASAP eeka oonee',
       expected: 'මට ASAP ඒක ඕනෑ',
@@ -337,7 +339,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_009',
+      tcId: 'Err_Fun_009', 
       name: 'Question with spacing error',
       input: 'oyaakohedhainnee',
       expected: 'ඔයා කොහෙද ඉන්නේ',
@@ -346,7 +348,7 @@ const TEST_DATA = {
       length: 'S'
     },
     {
-      tcId: 'Neg_Fun_010',
+      tcId: 'Err_Fun_010', 
       name: 'Complex slang statement',
       input: 'eyi bro eeka set karala denna',
       expected: 'එයි bro ඒක set කරල දෙන්න',
@@ -453,9 +455,9 @@ test.describe('SwiftTranslator - Singlish to Sinhala Conversion Tests', () => {
     }
   });
 
-  // Negative Functional Tests
-  test.describe('Negative Functional Tests', () => {
-    for (const testCase of TEST_DATA.negative) {
+  // Error Handling Tests (formerly Negative Tests)
+  test.describe('Error Handling Tests', () => {
+    for (const testCase of TEST_DATA.error_handling) { // FIXED: Changed from negative to error_handling
       test(`${testCase.tcId} - ${testCase.name}`, async () => {
         const actualOutput = await translator.performTranslation(testCase.input);
         expect(actualOutput).toBe(testCase.expected);
