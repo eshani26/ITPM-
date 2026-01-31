@@ -112,7 +112,7 @@ const TEST_DATA = {
       tcId: 'Pos_Fun_010',
       name: 'Date formats Long length command',
       input: '11/11/2025 dhina mama vaedata pamiNiyee naetha. namuth maagee nopaemiNiima salakuNu kara nomaetha, ema nisaa mata mee masa sampuurNa padi mudhal labaa dheyi kiyalaa mama hithanavaa. karuNaakara mata ee vistharaya hariyata hoyaa gaeniimata upakaara kala haekidha?',
-      expected: '11/11/2025 දින මම වැඩට පමිණියේ නැත. නමුත් මාගේ නොපැමිණීම සලකුණු කර නොමැත, එම නිසා මට මේ මස සම්පූර්ණ පඩි මුදල් ලබා දෙයි කියලා මම හිතනවා. කරුණාකර මට ඒ විස්තරය හරියට හොයා ගැනීමට උපකාර කල හැකිද?', // FIXED: Removed trailing space and changed length to L
+      expected: '11/11/2025 දින මම වැඩට පමිණියේ නැත. නමුත් මාගේ නොපැමිණීම සලකුණු කර නොමැත, එම නිසා මට මේ මස සම්පූර්ණ පඩි මුදල් ලබා දෙයි කියලා මම හිතනවා. කරුණාකර මට ඒ විස්තරය හරියට හොයා ගැනීමට උපකාර කල හැකිද?', 
       category: 'Compound structure',
       grammar: 'Imperative (command)',
       length: 'L' 
@@ -142,7 +142,7 @@ const TEST_DATA = {
       tcId: 'Pos_Fun_013',
       name: 'Units of measurements',
       input: 'magee bara 10kg k adu velaa, ema nisaa mata doctor beheth labaa dhunnaa',
-      expected: 'මගේ බර 10kg ක් අඩු වෙලා, එම නිසා මට doctor බෙහෙත් ලබා දුන්නා.', // FIXED: Removed trailing space
+      expected: 'මගේ බර 10kg ක් අඩු වෙලා, එම නිසා මට doctor බෙහෙත් ලබා දුන්නා.', 
       category: 'Units of measurements',
       grammar: 'Units',
       length: 'M'
@@ -189,7 +189,7 @@ const TEST_DATA = {
       length: 'S'
     },
     
-    // Numbers and Formats
+  
     {
       tcId: 'Pos_Fun_018',
       name: 'currency',
@@ -279,93 +279,93 @@ const TEST_DATA = {
     {
       tcId: 'Nev_Fun_002', 
       name: 'Joined compound words',
-      input: 'apipassekathakaramu',
-      expected: 'අපි පස්සේ කතා කරමු',
+      input: 'aapihetaudeyamu',
+      expected: 'අපි හෙට උදේම යමු',
       category: 'Typographical error handling',
       grammar: 'Future tense',
       length: 'S'
     },
     {
       tcId: 'Nev_Fun_003', 
-      name: 'Mixed spacing issues',
-      input: 'mata     oonee  eeka',
-      expected: 'මට ඕනෑ ඒක',
-      category: 'Formatting (spaces / line breaks / paragraph)',
+      name: 'Verify handling of special characters',
+      input: 'eyaa adha kiyavanavaa vaedi naedhdha. @mata nam ahan i#dhallaa epaa velaa',
+      expected: 'එයා අද කියවනවා වැඩි නැද්ද. මට නම් අහන් ඉදලා එපා වෙලා',
+      category: 'Typographical error handling',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
       tcId: 'Nev_Fun_004', 
-      name: 'Line break in sentence',
-      input: 'mama gedhara yanavaa kamaltatath kiyanna', 
-      expected: 'මම ගෙදර යනවා කමල්ටත් කියන්න', 
-      category: 'Formatting (spaces / line breaks / paragraph)',
+      name: 'Verify handling of line breaks inside a word',
+      input: 'mama gedha\nrayanavaa (Note: In Excel, press Alt + Enter to create the line break between "gedha" and "rayanavaa")',
+      expected: 'මම ගෙදර යනවා.', 
+      category: 'Typographical error handling',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
       tcId: 'Nev_Fun_005', 
-      name: 'Informal slang phrase',
-      input: 'machaang supiriyaane',
-      expected: 'මචාන්ග් සුපිරියානෙ',
-      category: 'Slang / informal language',
+      name: 'Ambiguous mixed language fails',
+      input: 'I mata office ekee meeting ekak thiyenava so late veyi. ',
+      expected: 'මට office එකේ meeting එකක් තියෙනව සො late වෙයි.',
+      category: 'multi Languages',
       grammar: 'Simple sentence',
       length: 'S'
     },
     {
       tcId: 'Nev_Fun_006', 
-      name: 'Colloquial expression',
-      input: 'adooo mokakkdha mee',
-      expected: 'අඩෝඕ මොකක්ක්ද මේ',
-      category: 'Slang / informal language',
-      grammar: 'Interrogative (question)',
+      name: 'Verify handling of HTML/Code tags',
+      input: '<h1>Hello</h1>',
+      expected: '<h1>Hello</h1>',
+      category: 'The system correctly treated the HTML tags as plain text and did not attempt to render them or execute code.',
+      grammar: 'Robustness validation',
       length: 'S'
     },
     {
       tcId: 'Nev_Fun_007', 
-      name: 'Mixed English with errors',
-      input: 'mamaWhatsAppekagiyaa',
-      expected: 'මම WhatsApp එකගියා',
-      category: 'Mixed Singlish + English',
-      grammar: 'Past tense',
-      length: 'S'
+      name: 'Verify handling of mixed alphanumeric noise',
+      input: 'User01 ID5592 Pass9981 KeyX772 LogV3.4 SystemCheckOK',
+      expected: 'User01 ID5592 Pass9981 KeyX772 LogV3.4 SystemCheckOK (Should remain as English/Alphanumeric)',
+      category: 'Typographical error handling',
+      grammar: 'Compound sentence',
+      length: 'M'
     },
     {
       tcId: 'Nev_Fun_008', 
-      name: 'Abbreviation in sentence',
-      input: 'mata ASAP eeka oonee',
-      expected: 'මට ASAP ඒක ඕනෑ',
-      category: 'Names / places / common English words',
-      grammar: 'Simple sentence',
-      length: 'S'
+      name: 'Verify handling of long technical file paths',
+      input: 'Error: File not found at C:/Users/Admin/Documents/Project_Alpha/Build_v2/Logs/error_log_2023_10_25.txt. Please check the directory D:/Backup/Server/Node_01/Data/Cache/Temp/Images/Assets/recovery_tool_v4.5.exe. If the problem persists, contact support at admin@sysnet.com or visit www.helpdesk.com/ticket/create/id=99283.',
+      expected: 'The output should remain in English, preserving file paths and URLs exactly).',
+      category: 'The system handled a massive block of non-narrative, technical text without incorrectly transliterating file paths into Sinhala.',
+      grammar: 'Names / places / common English words',
+      length: 'L'
     },
     {
       tcId: 'Nev_Fun_009', 
-      name: 'Question with spacing error',
-      input: 'oyaakohedhainnee',
-      expected: 'ඔයා කොහෙද ඉන්නේ',
-      category: 'Typographical error handling',
+      name: 'Verify handling of long joined text (no spaces)',
+      input: 'apitripekaKandyvalatayamudhatrafficnisaayanakotaparakkuveyidha?',
+      expected: 'අපි trip එක Kandy වලට යමුද traffic නිසා යනකොට පරක්කුවෙයි ද?',
+      category: 'The system correctly identified the long string as unrecognized due to missing spaces and returned it as-is without attempting an incorrect translation.',
       grammar: 'Interrogative (question)',
-      length: 'S'
+      length: 'M'
     },
     {
       tcId: 'Nev_Fun_010', 
-      name: 'Complex slang statement',
-      input: 'eyi bro eeka set karala denna',
-      expected: 'එයි bro ඒක set කරල දෙන්න',
-      category: 'Slang / informal language',
-      grammar: 'Imperative (command)',
+      name: 'Verify handling of programming syntax',
+      input: 'print("hello")',
+      expected: 'print("hello"); (Should remain exactly as typed)',
+      category: 'The system correctly identified the text as technical syntax and did not attempt to convert "print" into Sinhala phonetics.',
+      grammar: 'Verify handling of programming syntax',
       length: 'S'
     }
   ],
   
   ui: {
     tcId: 'Pos_UI_001',
-    name: 'Real-time translation updates as typing',
-    input: 'mama kaeema kannavaa',
-    partialInput: 'mama kae',
+    name: 'Verify input box placeholder text',
+    input: '(leave empty)',
+    partialInput: '(leave empty)',
     expectedFull: 'මම කෑම කන්නවා',
-    category: 'Usability flow',
+    category: 'Real-time output update behavior',
     grammar: 'Present tense',
     length: 'S'
   }
